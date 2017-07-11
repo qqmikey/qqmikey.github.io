@@ -1,8 +1,6 @@
-$( document ).ready(function() {
-  var elems = $('.service_block');
-  var els = document.getElementsByClassName('service_block');
+var els = document.getElementsByClassName('service_block');
 
-  function equalHeight() {
+function equalHeight() {
     function getMax() {
       var max = 0,
         count = els.length;
@@ -18,21 +16,23 @@ $( document ).ready(function() {
     for (var i = 0;i < els.length; i++) {
           els[i].style.height = getMax() + 'px';
       }
-    
   }
 
-  equalHeight(els);
-
+$( document ).ready(function() {
   window.addEventListener("resize", function (e) {
       var count = els.length;
-      elems.each(function () {
+      $('.service_block').each(function () {
         var imgHeight = $(this).find('img').height(),
           pHeight = $(this).find('p').height();
         // $(this).height(imgHeight + pHeight + 10);
         this.style.height = imgHeight + pHeight + 10 + 'px';
         if (!--count) {
-          equalHeight(elems);
+          equalHeight(els);
         }
       });
   });
+});
+
+$(window).on("load", function() {
+  equalHeight(els);
 });
