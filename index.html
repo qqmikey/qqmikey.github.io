@@ -8,6 +8,7 @@
     <link href="static/css/style.css" rel="stylesheet" type="text/css" />
     <script src="static/js/mui.min.js"></script>
     <script src="static/js/jquery-3.2.1.min.js"></script>
+    <script src="static/js/main.js"></script>
   </head>
   <body >
     <div class="sidebar">
@@ -74,44 +75,6 @@
                             <p class="mui--text-center">Аудит и продвижение</p>
                           </div>
                         </div>
-                        <script type="text/javascript">
-                          $(function () {
-                            var elems = $('.service_block');
-
-                            function equalHeight(elems) {
-                              function getMax(cb) {
-                                var max = 0,
-                                  count = elems.length;
-
-                                elems.each(function () {
-                                  if ($(this).height() > max) {
-                                    max = $(this).height();
-                                  }
-                                  if (!--count) {
-                                    cb(max);
-                                  }
-                                });
-                              }
-
-                              getMax(function (height) {
-                                elems.css('height', height)
-                              }); 
-                              
-                            }
-
-                            equalHeight(elems);
-
-                            window.addEventListener("resize", function (e) {
-                                var count = elems.length;
-                                elems.each(function (el, i) {
-                                  $(this).height($(this).find('img').height() + $(this).find('p').height() + 10);
-                                  if (!--count) {
-                                    equalHeight(elems);
-                                  }
-                                });
-                            });
-                          });
-                        </script>
                     </div>    
           </div>
           <br>
