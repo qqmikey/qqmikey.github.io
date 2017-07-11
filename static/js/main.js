@@ -1,36 +1,38 @@
 $( document ).ready(function() {
-                            var elems = $('.service_block');
+  var elems = $('.service_block');
+  var els = document.getElementsByClassName('service_block');
 
-                            function equalHeight(elems) {
-                              function getMax(cb) {
-                                var max = 0,
-                                  count = elems.length;
+  function equalHeight() {
+    function getMax() {
+      var max = 0,
+        count = els.length;
 
-                                elems.each(function () {
-                                  if ($(this).height() > max) {
-                                    max = $(this).height();
-                                  }
-                                  if (!--count) {
-                                    cb(max);
-                                  }
-                                });
-                              }
+      for (var i = 0;i < els.length; i++) {
+          if (els[i].clientHeight > max) {
+            max = els[i].clientHeight;
+          }
+      }
+      return max;
+    }
 
-                              getMax(function (height) {
-                                elems.css('height', height)
-                              }); 
-                              
-                            }
+    for (var i = 0;i < els.length; i++) {
+          els[i].style.height = getMax() + 'px';
+      }
+    
+  }
 
-                            equalHeight(elems);
+  equalHeight(els);
 
-                            window.addEventListener("resize", function (e) {
-                                var count = elems.length;
-                                elems.each(function (el, i) {
-                                  $(this).height($(this).find('img').height() + $(this).find('p').height() + 10);
-                                  if (!--count) {
-                                    equalHeight(elems);
-                                  }
-                                });
-                            });
-                          });
+  window.addEventListener("resize", function (e) {
+      var count = els.length;
+      elems.each(function () {
+        var imgHeight = $(this).find('img').height(),
+          pHeight = $(this).find('p').height();
+        // $(this).height(imgHeight + pHeight + 10);
+        this.style.height = imgHeight + pHeight + 10 + 'px';
+        if (!--count) {
+          equalHeight(elems);
+        }
+      });
+  });
+});
