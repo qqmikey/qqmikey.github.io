@@ -50,7 +50,7 @@ a.nostyle:hover {
 }
 
 .service_block {
-    background-color: rgba(255, 255, 255, 0.33);
+    background-color: rgba(255, 255, 255, 0.40);
     border-radius: 8px;
 }
 
@@ -76,7 +76,7 @@ a.nostyle:hover {
 }
 
 .content__row {
-    background-color: rgba(0, 0, 0, 0.77);
+    background-color: rgba(0, 0, 0, 0.88);
     height: 100%;
     overflow-y: scroll;
 }
@@ -97,7 +97,14 @@ p.hashtag {
 
 @media (max-width: 768px) {
   .sidebar__bottom {
-    display: none;
+    display: inline-block;
+    position: initial;
+    float: right;
+    margin-top: 24px;
+  }
+
+  .header_text {
+    display: inline-block;
   }
 
   .mui-container-fluid {
