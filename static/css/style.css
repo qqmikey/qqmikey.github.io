@@ -17,6 +17,11 @@ buttons {
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
 }
 
+body {
+  background-color: #e57373;
+  margin: 0;
+}
+
 
 /**
  * Sidebar CSS
@@ -38,18 +43,26 @@ buttons {
   }
 }
 
-#content {
+.content {
   height: 100%;
-  background-image: url('../img/background.jpg');
+  color: #fff;
+  background: url(../img/background.jpg) no-repeat;
   background-size: cover;
-  color: #fff
+  background-position-x: 20px;
+  background-color: #ececec;
+}
+
+.content__row {
+    background-color: rgba(0, 0, 0, 0.77);
+    height: 100%;
+    overflow-y: scroll;
 }
 
 /**
  * Content CSS
  */
 @media (min-width: 768px) {
-  #content {
+  .content {
     margin-left: 180px;
   }
 }
