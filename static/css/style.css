@@ -35,13 +35,27 @@ a.nostyle:hover {
  * Sidebar CSS
  */
 
-#sidebar {
+.sidebar {
   background-color: #E57373;
   padding: 15px;
 }
 
+.sidebar__bottom {
+  position: absolute;
+  bottom: 50px;
+}
+
+.di {
+  display: inline;
+}
+
+.service_block {
+    background-color: rgba(255, 255, 255, 0.31);
+    border-radius: 8px;
+}
+
 @media (min-width: 768px) {
-  #sidebar {
+  .sidebar {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -58,6 +72,7 @@ a.nostyle:hover {
   background-size: cover;
   background-position-x: 20px;
   background-color: #ececec;
+  font-size: 1.15em;
 }
 
 .content__row {
@@ -66,11 +81,32 @@ a.nostyle:hover {
     overflow-y: scroll;
 }
 
+p.hashtag {
+  color: #2196F3;
+  margin-bottom: 0;
+}
+
 /**
  * Content CSS
  */
 @media (min-width: 768px) {
   .content {
     margin-left: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar__bottom {
+    display: none;
+  }
+
+  .mui-container-fluid {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .services__wrap:nth-child(3),.services__wrap:nth-child(4) {
+    margin-top: 40px;
   }
 }
