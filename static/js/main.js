@@ -35,4 +35,9 @@ $( document ).ready(function() {
 
 $(window).on("load", function() {
   equalHeight(els);
+  $('.flipcard .back').css({display: 'block'});
+  // $('.flipcard').flip({
+  //   trigger: 'hover',
+  //   speed: 200
+  // });
 });
