@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="static/css/mui.min.css" rel="stylesheet" type="text/css" />
-    <link href="static/css/style.css" rel="stylesheet" type="text/css" />
-    <script src="static/js/mui.min.js"></script>
-    <script src="static/js/jquery-3.2.1.min.js"></script>
-    <script src="static/js/jquery.equalheights.min.js"></script>
+    <link href="/static/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css" />
+    <script src="/static/js/mui.min.js"></script>
+    <script src="/static/js/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/jquery.equalheights.min.js"></script>
   </head>
   <body >
     <div class="sidebar">
@@ -20,20 +20,20 @@
 
         <div class="di">
           <a href="https://telegram.me/qqmikey" class="mui--text-white mui--align-vertical" target="_blank">
-          <img src="static/img/tg.png" height="30"></a>  
+          <img src="/static/img/tg.png" height="30"></a>  
         </div>
         <div class="di">
           <a href="tel:+79292698962" class="mui--text-white mui--align-vertical" target="_blank">
-          <img src="static/img/call.png" height="30"></a>  
+          <img src="/static/img/call.png" height="30"></a>  
         </div>
         <div class="di">
           <a href="https://vk.com/qqmikey" class="mui--text-white mui--align-vertical" target="_blank">
-          <img src="static/img/vk.png" height="30"></a>  
+          <img src="/static/img/vk.png" height="30"></a>  
         </div>
         
         <div class="di">
           <a href="mailto:qqmikey@icloud.com" class="mui--text-white mui--align-vertical" target="_blank">
-          <img src="static/img/email.ico" height="30"></a>  
+          <img src="/static/img/email.png" height="30"></a>  
         </div>
       </div>
     </div>
@@ -76,19 +76,20 @@
                           </div>
                         </div>
                         <script type="text/javascript">
-                          var elems = $('.service_block');
-                          elems.equalHeights();  
-                          window.addEventListener("resize", function (e) {
-                              var count = elems.length;
-                              elems.each(function (el, i) {
-                                $(this).height($(this).find('img').height() + $(this).find('p').height() + 10);
-                                if (!--count) {
-                                  elems.equalHeights();
-                                }
-                              });
+                          $(function () {
+                            var elems = $('.service_block');
+                            elems.equalHeights();  
+                            window.addEventListener("resize", function (e) {
+                                var count = elems.length;
+                                elems.each(function (el, i) {
+                                  $(this).height($(this).find('img').height() + $(this).find('p').height() + 10);
+                                  if (!--count) {
+                                    elems.equalHeights();
+                                  }
+                                });
+                            });
                           });
                         </script>
-                        
                     </div>    
           </div>
           <br>
