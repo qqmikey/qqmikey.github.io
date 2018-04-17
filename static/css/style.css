@@ -18,8 +18,28 @@ buttons {
 }
 
 body {
-    background-color: #e57373;
+    /*background-color: #e57373;*/
+    background-color: rgba(0, 0, 0, 0);
     margin: 0;
+    color: #fff;
+}
+
+html {
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100%;
+}
+
+html {
+    background: url(../img/background_black.jpg) no-repeat center center fixed;
+    background-color: rgba(0, 0, 0, 0.88);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 a.nostyle {
@@ -39,6 +59,11 @@ a.nostyle:hover {
     background-color: #E57373;
     padding: 15px;
 }
+.sidebar {
+    /*position: absolute;*/
+    /*width: 100%;*/
+}
+
 
 .sidebar__bottom {
     position: absolute;
@@ -67,19 +92,19 @@ a.nostyle:hover {
 }
 
 .content {
-    height: 100%;
+    /*height: 100%;*/
     color: #fff;
-    background: url(../img/background.jpg) no-repeat;
-    background-size: cover;
-    background-position-x: 20px;
-    background-color: #ececec;
+    /*background: url(../img/background.jpg) no-repeat;*/
+    /*background-size: cover;*/
+    /*background-position-x: 20px;*/
+    /*background-color: #ececec;*/
     font-size: 1.15em;
 }
 
 .content__row {
-    background-color: rgba(0, 0, 0, 0.88);
-    height: 100%;
-    overflow-y: scroll;
+    /*background-color: rgba(0, 0, 0, 0.88);*/
+    /*height: 100%;*/
+    /*overflow-y: scroll;*/
 }
 
 .hashtag {
@@ -119,12 +144,10 @@ a.nostyle:hover {
         margin-top: 24px;
         top:0;
     }
-    .sidebar {
-        position: absolute;
-        width: 100%;
-    }
-    .content {
-        padding-top: 64px;
+
+    .mui-row {
+        margin-left: 0;
+        margin-right: 0;
     }
 
     .header_text {
