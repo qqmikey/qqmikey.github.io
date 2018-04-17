@@ -1,56 +1,149 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="/static/css/mui.min.css" rel="stylesheet" type="text/css" />
-    <link href="/static/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/static/css/mui.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="/static/lightgallery/css/lightgallery.css">
     <script src="/static/js/mui.min.js"></script>
-  </head>
-  <body style="">
-    <div class="sidebar">
-      <h2 class="mui--text-white mui--text-display1 mui--align-vertical header_text" style="text-align: center;"><a class="nostyle" href="/">&lt;dev/&gt;</a></h2>
-      <div class="sidebar__bottom">
+    <script src="/static/lightgallery/js/lightgallery.min.js"></script>
+</head>
+<body style="">
+<div class="sidebar">
+    <h2 class="mui--text-white mui--text-display1 mui--align-vertical header_text" style="text-align: center;"><a
+            class="nostyle" href="/">&lt;dev/&gt;</a></h2>
+    <div class="sidebar__bottom">
         <div class="mui--hidden-xs mui--hidden-sm">
-          <h2 class="mui--text-light">Связаться</h2>
+            <h2 class="mui--text-light">Связаться</h2>
         </div>
 
         <div class="di">
-          <a href="https://telegram.me/qqmikey" class="mui--text-white mui--align-vertical" target="_blank">
-          <img src="/static/img/tg.png" height="30"></a>  
+            <a href="https://telegram.me/qqmikey" class="mui--text-white mui--align-vertical" target="_blank">
+                <img src="/static/img/tg.png" height="30"></a>
         </div>
         <div class="di">
-          <a href="tel:+79292698962" class="mui--text-white mui--align-vertical">
-          <img src="/static/img/call.png" height="30"></a>  
+            <a href="tel:+79292698962" class="mui--text-white mui--align-vertical">
+                <img src="/static/img/call.png" height="30"></a>
         </div>
         <div class="di">
-          <a href="https://vk.com/qqmikey" class="mui--text-white mui--align-vertical" target="_blank">
-          <img src="/static/img/vk.png" height="30"></a>  
+            <a href="https://vk.com/qqmikey" class="mui--text-white mui--align-vertical" target="_blank">
+                <img src="/static/img/vk.png" height="30"></a>
         </div>
-        
+
         <div class="di">
-          <a href="mailto:qqmikey@icloud.com" class="mui--text-white mui--align-vertical">
-          <img src="/static/img/email.png" height="30"></a>  
+            <a href="mailto:qqmikey@icloud.com" class="mui--text-white mui--align-vertical">
+                <img src="/static/img/email.png" height="30"></a>
         </div>
-      </div>
     </div>
-    <div class="content mui-container-fluid">
-      <div class="mui-row content__row">
+</div>
+<div class="content mui-container-fluid">
+    <div class="mui-row content__row">
         <div class="mui-col-sm-10 mui-col-sm-offset-1">
-          <br>
-          <br>
-          <br>
-          <br>
-          <div class="mui--text-headline">HR bot</div>
-          <div class="mui-divider"></div>
-          <div>
-            Telegram bot
-          </div>
-          <br>
-          <br>
+            <br>
+            <br>
+            <div class="mui--text-headline">HR bot</div>
+            <br>
+            <div class="mui-divider"></div>
+            <div>
+                <div class="mui-container-fluid">
+                    <div class="mui-row">
+                        <div class="mui-col-md-8">
+                            <ul>
+                                <li>
+                                    <p><b>Заполнение резюме</b></p>
+                                    Соискатель может заполнять резюме в формате вопрос-ответ используя мессенжер <a
+                                        href="http://telegram.org/">telegram</a>.
+                                    Заполненные анкеты отображаются в веб интерфейсе администратора.
+                                </li>
+                                <br>
+                                <li>
+                                    <p><b>Редактирование вопросов</b></p>
+                                    В административной панели есть возможность создания новых опросников и
+                                    редактирования последовательности вопросов.
+                                </li>
+                                <br>
+                                <li>
+                                    <p><b>Рыссылки</b></p>
+                                    Администратор может осуществлять как массовые рассылки пользователям, так и
+                                    создавать персональные чаты.
+                                </li>
+                                <br>
+                                <li>
+                                    <p><b>Подборка вакансий</b></p>
+                                    Формирование и отправка списка подходящих вакансий выбранному списку соискателей.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mui-col-md-4 mui-row">
+                            <!--<div class="mui-col-md-12 mui-col-xs-6" style="padding: 16px; text-align: center;">-->
+                                <!--<h2>Технологии</h2>-->
+                            <!--</div>-->
+                            <div class="mui-row mui-col-xs-6 mui-col-md-12">
+                                <!--<div class="mui-col-md-6" style="text-align: center;">-->
+                                <!--<img src="/static/img/toramp/logo.png" width="64">-->
+                                <!--</div>-->
+                                <div class="mui-col-md-12">
+                                    <span class="hashtag">#node.js</span><br/>
+                                    <span class="hashtag">#react</span><br/>
+                                    <span class="hashtag">#telegram</span><br/>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+
+                    <div class="mui-row" id="lightgallery">
+                        <a href="/static/img/hrbot/screen1.png" class="mui-col-xs-4">
+                            <img src="/static/img/hrbot/screen1.png" style="width: 100%">
+                        </a>
+                        <a href="/static/img/hrbot/screen2.png" class="mui-col-xs-4">
+                            <img src="/static/img/hrbot/screen2.png" style="width: 100%">
+                        </a>
+                        <a href="/static/img/hrbot/screen3.png" class="mui-col-xs-4">
+                            <img src="/static/img/hrbot/screen3.png" style="width: 100%;">
+                        </a>
+                    </div>
+                    <br/>
+                    <br/>
+                    <div class="mui-row">
+                        <div id="disqus_thread"></div>
+                        <script>
+
+                            /**
+                             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+                            var disqus_config = function () {
+                                this.page.url = 'https://qqmikey.github.io/toramp/';  // Replace PAGE_URL with your page's canonical URL variable
+                                this.page.identifier = 'toramp'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                            };
+
+                            (function () { // DON'T EDIT BELOW THIS LINE
+                                var d = document, s = d.createElement('script');
+                                s.src = 'https://portfolio-zv625ohmtj.disqus.com/embed.js';
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                            })();
+                        </script>
+                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+                            powered by Disqus.</a></noscript>
+
+                    </div>
+
+                </div>
+            </div>
+            <br>
+            <br>
         </div>
-      </div>
     </div>
-  </body>
+</div>
+<script>
+    lightGallery(document.getElementById('lightgallery'));
+</script>
+</body>
 </html>
