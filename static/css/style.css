@@ -52,6 +52,7 @@ a.nostyle:hover {
 .service_block {
     background-color: rgba(255, 255, 255, 0.40);
     border-radius: 8px;
+    overflow: hidden;
 }
 
 @media (min-width: 768px) {
@@ -114,9 +115,10 @@ a.nostyle:hover {
 @media (max-width: 768px) {
     .sidebar__bottom {
         display: inline-block;
-        position: initial;
         float: right;
         margin-top: 24px;
+        position: absolute;
+        top:0;
     }
 
     .header_text {
