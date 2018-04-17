@@ -145,6 +145,10 @@ a.nostyle:hover {
         top:0;
     }
 
+    .cc {
+        padding-left: 0;
+    }
+
     .mui-row {
         margin-left: 0;
         margin-right: 0;
