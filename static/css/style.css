@@ -81,6 +81,11 @@ a.nostyle:hover {
     overflow: hidden;
 }
 
+.project-name {
+    font-size: 18px;
+    font-weight: 600;
+}
+
 @media (min-width: 768px) {
     .sidebar {
         position: fixed;
