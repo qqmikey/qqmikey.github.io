@@ -117,8 +117,14 @@ a.nostyle:hover {
         display: inline-block;
         float: right;
         margin-top: 24px;
-        position: absolute;
         top:0;
+    }
+    .sidebar {
+        position: absolute;
+        width: 100%;
+    }
+    .content {
+        padding-top: 64px;
     }
 
     .header_text {
