@@ -35,6 +35,7 @@ body {
 
 html {
     background: url(../img/background_black.jpg) no-repeat center center fixed;
+    background-position-x: 20px;
     background-color: rgba(0, 0, 0, 0.88);
     -webkit-background-size: cover;
     -moz-background-size: cover;
