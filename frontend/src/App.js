@@ -1,29 +1,26 @@
+import firebase from 'firebase';
+
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
 import Hidden from '@material-ui/core/Hidden';
-import Divider from '@material-ui/core/Divider';
-import Collapse from '@material-ui/core/Collapse';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import StarBorder from '@material-ui/icons/StarBorder';
-import MenuIcon from '@material-ui/icons/Menu';
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
-import blue from '@material-ui/core/colors/blue';
+import DrawerList from './components/drawerList';
+import Menu from './components/menu';
+import TechStack from './components/technologyStack';
+
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+
+
+
+import strings from './strings';
 
 const drawerWidth = 240;
 
@@ -32,6 +29,18 @@ const muitheme = createMuiTheme({
         type: 'dark',
     },
 });
+
+const config = {
+    apiKey: "AIzaSyDQFE_Ue3Yuk25E3SK8yyP1mQLcFklurEo",
+    authDomain: "qqmikey-9504e.firebaseapp.com",
+    databaseURL: "https://qqmikey-9504e.firebaseio.com",
+    projectId: "qqmikey-9504e",
+    storageBucket: "qqmikey-9504e.appspot.com",
+    messagingSenderId: "90508547424"
+};
+
+let app = firebase.initializeApp(config);
+let db = app.database();
 
 const styles = theme => ({
     root: {
@@ -51,20 +60,19 @@ const styles = theme => ({
             display: 'none',
         },
     },
-    toolbar: theme.mixins.toolbar,
     drawerPaper: {
         width: drawerWidth,
         [theme.breakpoints.up('md')]: {
-            position: 'relative',
+            position: 'fixed',
         },
+    },
+    media: {
+        height: 0,
+        paddingTop: '56.25%', // 16:9
     },
     content: {
         flexGrow: 1,
-        // backgroundColor: theme.palette.background.default,
         padding: theme.spacing.unit * 3,
-    },
-    nested: {
-        paddingLeft: theme.spacing.unit * 4,
     },
     flex: {
         flex: 1,
@@ -73,97 +81,28 @@ const styles = theme => ({
 
 class App extends React.Component {
     state = {
-        mobileOpen: false,
-        contactsOpen: false
+        lang: 'ru',
+        contactsOpen: false,
+        projects: []
     };
 
-    handleDrawerToggle = () => {
-        this.setState({mobileOpen: !this.state.mobileOpen});
-    };
+    componentDidMount() {
+        this.getProjects();
+    }
 
-    handleContactsToggle = () => {
-        this.setState({contactsOpen: !this.state.contactsOpen});
-    };
+    async getProjects() {
+        let projects = await db.ref('project_list').once('value');
+        projects = Object.values(projects.val());
+        this.setState({projects});
+    }
 
     render() {
         const {classes, theme} = this.props;
-
-        const drawer = (
-            <div>
-                <div className={classes.toolbar}/>
-                <Divider/>
-                <List>
-                    <ListItem button>
-                        <ListItemIcon>
-                            <InboxIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="Главная"/>
-                    </ListItem>
-                    <ListItem button>
-                        <ListItemIcon>
-                            <DraftsIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="Проекты"/>
-                    </ListItem>
-                </List>
-                <Divider/>
-                <List>
-                    <ListItem button onClick={this.handleContactsToggle.bind(this)}>
-                        <ListItemIcon>
-                            <InboxIcon/>
-                        </ListItemIcon>
-                        <ListItemText inset primary="Контакты"/>
-                        {this.state.open ? <ExpandLess/> : <ExpandMore/>}
-                    </ListItem>
-                    <Collapse in={this.state.contactsOpen} timeout="auto" unmountOnExit>
-                        <List component="div" disablePadding>
-                            <ListItem button className={classes.nested}>
-                                <ListItemIcon>
-                                    <StarBorder/>
-                                </ListItemIcon>
-                                <ListItemText inset primary="facebook" onClick={() => window.open("https://www.facebook.com/qqmikey")}>
-                                </ListItemText>
-                            </ListItem>
-                        </List>
-                    </Collapse>
-                </List>
-            </div>
-        );
-
         return (
             <MuiThemeProvider theme={muitheme}>
                 <div className={classes.root}>
-                    {/*<AppBar className={classes.appBar} >*/}
-                        {/*<Toolbar>*/}
-                            {/*<IconButton*/}
-                                {/*color="inherit"*/}
-                                {/*aria-label="open drawer"*/}
-                                {/*onClick={this.handleDrawerToggle}*/}
-                                {/*className={classes.navIconHide}*/}
-                            {/*>*/}
-                                {/*<MenuIcon/>*/}
-                            {/*</IconButton>*/}
-                            {/*<Typography variant="title" color="inherit" noWrap className={classes.flex}>*/}
-                                {/*Responsive drawer*/}
-                            {/*</Typography>*/}
-                            {/*<Button color="inherit">Login</Button>*/}
-                        {/*</Toolbar>*/}
-                    {/*</AppBar>*/}
-                    <Hidden mdUp>
-                        <Drawer
-                            variant="temporary"
-                            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-                            open={this.state.mobileOpen}
-                            onClose={this.handleDrawerToggle}
-                            classes={{
-                                paper: classes.drawerPaper,
-                            }}
-                            ModalProps={{
-                                keepMounted: true, // Better open performance on mobile.
-                            }}
-                        >
-                            {drawer}
-                        </Drawer>
+                    <Hidden mdUp implementation="css">
+                        <Menu/>
                     </Hidden>
                     <Hidden smDown implementation="css">
                         <Drawer
@@ -173,11 +112,61 @@ class App extends React.Component {
                                 paper: classes.drawerPaper,
                             }}
                         >
-                            {drawer}
+                            <DrawerList lang={this.state.lang}/>
                         </Drawer>
                     </Hidden>
                     <main className={classes.content}>
-                        sdfsdf
+                        <div className="content">
+
+
+                            <div>
+                                <h2>{strings[this.state.lang].titles.softwareDevelopment}</h2>
+                                <div style={{display: 'flex'}} className="header-images-wrapper">
+                                    <div style={{padding: 24, flex: 1}}>
+                                        <Card style={{minWidth: 320, maxWidth: 400, margin: '0 auto'}}>
+                                            <CardMedia
+                                                className={classes.media}
+                                                image="https://qqmikey.github.io/static/img/iosdev.png"
+                                                title=""
+                                            />
+                                            <CardContent>
+                                                <p>
+                                                    {strings[this.state.lang].texts.order}
+                                                </p>
+                                            </CardContent>
+                                            <CardActions>
+                                                <Button size="medium" color="secondary" fullWidth>
+                                                    {strings[this.state.lang].buttons.order}
+                                                </Button>
+                                            </CardActions>
+                                        </Card>
+                                    </div>
+                                    <div style={{padding: 24, flex: 1}}>
+                                        <Card style={{minWidth: 320, maxWidth: 400, margin: '0 auto'}}>
+                                            <CardMedia
+                                                className={classes.media}
+                                                image="https://qqmikey.github.io/static/img/webdev.png"
+                                                title=""
+                                            />
+                                            <CardContent>
+                                                <p>
+                                                    {strings[this.state.lang].texts.portfolio}
+                                                </p>
+                                            </CardContent>
+                                            <CardActions>
+                                                <Button size="medium" color="secondary" fullWidth>
+                                                    {strings[this.state.lang].buttons.portfolio}
+                                                </Button>
+                                            </CardActions>
+                                        </Card>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <TechStack lang={this.state.lang}/>
+
+
+                        </div>
                     </main>
                 </div>
             </MuiThemeProvider>
