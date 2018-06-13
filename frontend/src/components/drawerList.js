@@ -10,8 +10,16 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import Avatar from '@material-ui/core/Avatar';
 import StarBorder from '@material-ui/icons/StarBorder';
 import {withStyles} from "@material-ui/core/styles/index";
+
+import fbIcon from '../img/social/fb.png';
+import vkIcon from '../img/social/vk.png';
+import callIcon from '../img/social/call.png';
+import tgIcon from '../img/social/tg.png';
+import emailIcon from '../img/social/email.png';
+
 
 import strings from '../strings';
 
@@ -40,11 +48,11 @@ class DrawerList extends React.Component {
                 <div className={classes.toolbar}/>
                 <Divider/>
                 <List>
-                    <ListItem button>
-                        <ListItemIcon>
+                    <ListItem button className="active-link">
+                        <ListItemIcon className="active-link-icon">
                             <InboxIcon/>
                         </ListItemIcon>
-                        <ListItemText primary={strings[this.props.lang].menu.main}/>
+                        <ListItemText className="active-link-text" primary={strings[this.props.lang].menu.main}/>
                     </ListItem>
                     <ListItem button>
                         <ListItemIcon>
@@ -54,7 +62,7 @@ class DrawerList extends React.Component {
                     </ListItem>
                 </List>
                 <Divider/>
-                <List>
+                <List className="grayscaled">
                     <ListItem button onClick={this.handleContactsToggle.bind(this)}>
                         <ListItemIcon>
                             <InboxIcon/>
@@ -66,10 +74,32 @@ class DrawerList extends React.Component {
                         <List component="div" disablePadding>
                             <ListItem button className={classes.nested}
                                       onClick={() => window.open("https://www.facebook.com/qqmikey")}>
-                                <ListItemIcon>
-                                    <StarBorder/>
-                                </ListItemIcon>
+                                <Avatar src={fbIcon}/>
                                 <ListItemText inset primary="facebook">
+                                </ListItemText>
+                            </ListItem>
+                            <ListItem button className={classes.nested}
+                                      onClick={() => window.open("https://www.vk.com/qqmikey")}>
+                                <Avatar src={vkIcon}/>
+                                <ListItemText inset primary="vkontakte">
+                                </ListItemText>
+                            </ListItem>
+                            <ListItem button className={classes.nested}
+                                      onClick={() => window.open("mailto://qqmikey@icloud.com")}>
+                                <Avatar src={emailIcon}/>
+                                <ListItemText inset primary="email">
+                                </ListItemText>
+                            </ListItem>
+                            <ListItem button className={classes.nested}
+                                      onClick={() => window.open("https://telegram.me/qqmikey")}>
+                                <Avatar src={tgIcon}/>
+                                <ListItemText inset primary="telegram">
+                                </ListItemText>
+                            </ListItem>
+                            <ListItem button className={classes.nested}
+                                      onClick={() => window.open("tel://+79292698962")}>
+                                <Avatar src={callIcon}/>
+                                <ListItemText inset primary="call">
                                 </ListItemText>
                             </ListItem>
                         </List>

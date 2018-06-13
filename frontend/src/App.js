@@ -1,7 +1,6 @@
 import firebase from 'firebase';
 
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
@@ -10,17 +9,7 @@ import Hidden from '@material-ui/core/Hidden';
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 import DrawerList from './components/drawerList';
 import Menu from './components/menu';
-import TechStack from './components/technologyStack';
-
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-
-
-
-import strings from './strings';
+import Main from './components/main';
 
 const drawerWidth = 240;
 
@@ -97,7 +86,7 @@ class App extends React.Component {
     }
 
     render() {
-        const {classes, theme} = this.props;
+        const {classes} = this.props;
         return (
             <MuiThemeProvider theme={muitheme}>
                 <div className={classes.root}>
@@ -116,56 +105,8 @@ class App extends React.Component {
                         </Drawer>
                     </Hidden>
                     <main className={classes.content}>
-                        <div className="content">
-
-
-                            <div>
-                                <h2>{strings[this.state.lang].titles.softwareDevelopment}</h2>
-                                <div style={{display: 'flex'}} className="header-images-wrapper">
-                                    <div style={{padding: 24, flex: 1}}>
-                                        <Card style={{minWidth: 320, maxWidth: 400, margin: '0 auto'}}>
-                                            <CardMedia
-                                                className={classes.media}
-                                                image="https://qqmikey.github.io/static/img/iosdev.png"
-                                                title=""
-                                            />
-                                            <CardContent>
-                                                <p>
-                                                    {strings[this.state.lang].texts.order}
-                                                </p>
-                                            </CardContent>
-                                            <CardActions>
-                                                <Button size="medium" color="secondary" fullWidth>
-                                                    {strings[this.state.lang].buttons.order}
-                                                </Button>
-                                            </CardActions>
-                                        </Card>
-                                    </div>
-                                    <div style={{padding: 24, flex: 1}}>
-                                        <Card style={{minWidth: 320, maxWidth: 400, margin: '0 auto'}}>
-                                            <CardMedia
-                                                className={classes.media}
-                                                image="https://qqmikey.github.io/static/img/webdev.png"
-                                                title=""
-                                            />
-                                            <CardContent>
-                                                <p>
-                                                    {strings[this.state.lang].texts.portfolio}
-                                                </p>
-                                            </CardContent>
-                                            <CardActions>
-                                                <Button size="medium" color="secondary" fullWidth>
-                                                    {strings[this.state.lang].buttons.portfolio}
-                                                </Button>
-                                            </CardActions>
-                                        </Card>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <TechStack lang={this.state.lang}/>
-
-
+                        <div className="content" style={{marginBottom: 48}}>
+                            <Main lang={this.state.lang} />
                         </div>
                     </main>
                 </div>

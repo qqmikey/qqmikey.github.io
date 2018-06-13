@@ -115,3 +115,11 @@ body {
     -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
     filter: grayscale(100%);
 }
+
+.active-link .active-link-icon {
+    color: #f50057 !important;
+}
+
+.active-link .active-link-text span {
+    color: #f50057 !important;
+}
