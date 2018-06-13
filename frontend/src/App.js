@@ -1,7 +1,8 @@
 import firebase from 'firebase';
 
-import React from 'react';
 import './App.css';
+import React from 'react';
+import Avatar from '@material-ui/core/Avatar';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -10,6 +11,17 @@ import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 import DrawerList from './components/drawerList';
 import Menu from './components/menu';
 import Main from './components/main';
+import Projects from './components/projectsList';
+import Extension from '@material-ui/icons/Extension';
+import MenuIcon from '@material-ui/icons/Menu';
+
+import callIcon from './img/social/call.png';
+import tgIcon from './img/social/tg.png';
+import emailIcon from './img/social/email.png';
+import Tooltip from '@material-ui/core/Tooltip';
+
+import AllOut from '@material-ui/icons/AllOut';
+import strings from "./strings";
 
 const drawerWidth = 240;
 
@@ -68,21 +80,52 @@ const styles = theme => ({
     },
 });
 
+
 class App extends React.Component {
     state = {
         lang: 'ru',
         contactsOpen: false,
-        projects: []
+        menuOpen: false,
+        page: 'main',
+        buttons: [
+            {
+                icon: <Tooltip  title={strings['ru'].menu.main} placement="top">
+                    <AllOut style={{color: '#000'}}/>
+                </Tooltip>,
+                onClick: () => this.setState({page: 'main', menuOpen: false})
+            }, {
+                icon: <Tooltip  title={strings['ru'].menu.projects} placement="top">
+                    <Extension style={{color: '#000'}}/>
+                </Tooltip>,
+                onClick: () => this.setState({page: 'projects'})
+            }, {
+                icon: <Avatar src={callIcon} style={{color: '#000'}}/>,
+                onClick: () => window.open("tel://+79292698962")
+            }, {
+                icon: <Avatar src={emailIcon} style={{color: '#000'}}/>,
+                onClick: () => window.open("mailto://qqmikey@icloud.com")
+            }, {
+                icon: <Avatar src={tgIcon} style={{color: '#000'}}/>,
+                onClick: () => window.open("https://telegram.me/qqmikey")
+            }
+        ]
     };
 
     componentDidMount() {
-        this.getProjects();
     }
 
-    async getProjects() {
-        let projects = await db.ref('project_list').once('value');
-        projects = Object.values(projects.val());
-        this.setState({projects});
+    renderContent() {
+        switch (this.state.page) {
+            case 'main':
+                return <Main lang={this.state.lang} onPageChange={this.onPageChange.bind(this)}/>;
+            case 'projects':
+                return <Projects projects={this.state.projects} lang={this.state.lang} db={db}/>;
+        }
+        return null;
+    }
+
+    onPageChange(page) {
+        this.setState({page})
     }
 
     render() {
@@ -91,7 +134,7 @@ class App extends React.Component {
             <MuiThemeProvider theme={muitheme}>
                 <div className={classes.root}>
                     <Hidden mdUp implementation="css">
-                        <Menu/>
+                        <Menu buttons={this.state.buttons} isOpen={this.state.menuOpen} mainButtonIcon={<MenuIcon />}/>
                     </Hidden>
                     <Hidden smDown implementation="css">
                         <Drawer
@@ -101,12 +144,15 @@ class App extends React.Component {
                                 paper: classes.drawerPaper,
                             }}
                         >
-                            <DrawerList lang={this.state.lang}/>
+                            <DrawerList lang={this.state.lang} onPageChange={this.onPageChange.bind(this)}
+                                        page={this.state.page}/>
                         </Drawer>
                     </Hidden>
                     <main className={classes.content}>
-                        <div className="content" style={{marginBottom: 48}}>
-                            <Main lang={this.state.lang} />
+                        <div className="content" style={{marginBottom: 96}}>
+                            {
+                                this.renderContent()
+                            }
                         </div>
                     </main>
                 </div>

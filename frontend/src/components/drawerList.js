@@ -6,12 +6,12 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Divider from '@material-ui/core/Divider';
 import Collapse from '@material-ui/core/Collapse';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Avatar from '@material-ui/core/Avatar';
-import StarBorder from '@material-ui/icons/StarBorder';
+import AllOut from '@material-ui/icons/AllOut';
+import Contacts from '@material-ui/icons/Contacts';
+import Extension from '@material-ui/icons/Extension';
 import {withStyles} from "@material-ui/core/styles/index";
 
 import fbIcon from '../img/social/fb.png';
@@ -48,24 +48,24 @@ class DrawerList extends React.Component {
                 <div className={classes.toolbar}/>
                 <Divider/>
                 <List>
-                    <ListItem button className="active-link">
-                        <ListItemIcon className="active-link-icon">
-                            <InboxIcon/>
+                    <ListItem button className={this.props.page === 'main' ? 'active-link' : ''} onClick={this.props.onPageChange.bind(this, 'main')}>
+                        <ListItemIcon className={this.props.page === 'main' ? 'active-link-icon' : ''}>
+                            <AllOut/>
                         </ListItemIcon>
-                        <ListItemText className="active-link-text" primary={strings[this.props.lang].menu.main}/>
+                        <ListItemText className={this.props.page === 'main' ? 'active-link-text' : ''} primary={strings[this.props.lang].menu.main}/>
                     </ListItem>
-                    <ListItem button>
-                        <ListItemIcon>
-                            <DraftsIcon/>
+                    <ListItem button className={this.props.page === 'projects' ? 'active-link' : ''} onClick={this.props.onPageChange.bind(this, 'projects')}>
+                        <ListItemIcon className={this.props.page === 'projects' ? 'active-link-icon' : ''}>
+                            <Extension/>
                         </ListItemIcon>
-                        <ListItemText primary={strings[this.props.lang].menu.projects}/>
+                        <ListItemText className={this.props.page === 'projects' ? 'active-link-text' : ''} primary={strings[this.props.lang].menu.projects}/>
                     </ListItem>
                 </List>
                 <Divider/>
                 <List className="grayscaled">
                     <ListItem button onClick={this.handleContactsToggle.bind(this)}>
                         <ListItemIcon>
-                            <InboxIcon/>
+                            <Contacts/>
                         </ListItemIcon>
                         <ListItemText inset primary={strings[this.props.lang].menu.contacts}/>
                         {this.state.open ? <ExpandLess/> : <ExpandMore/>}

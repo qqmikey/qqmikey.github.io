@@ -66,7 +66,7 @@ class Main extends React.Component {
                                     </p>
                                 </CardContent>
                                 <CardActions>
-                                    <Button size="medium" color="secondary" fullWidth>
+                                    <Button size="medium" color="secondary" fullWidth onClick={() => window.open("mailto://qqmikey@icloud.com")}>
                                         {strings[this.props.lang].buttons.order}
                                     </Button>
                                 </CardActions>
@@ -85,7 +85,7 @@ class Main extends React.Component {
                                     </p>
                                 </CardContent>
                                 <CardActions>
-                                    <Button size="medium" color="secondary" fullWidth>
+                                    <Button size="medium" color="secondary" fullWidth onClick={this.props.onPageChange.bind(this, 'projects')}>
                                         {strings[this.props.lang].buttons.portfolio}
                                     </Button>
                                 </CardActions>

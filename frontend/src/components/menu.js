@@ -4,37 +4,6 @@ import {Motion, spring} from 'react-motion';
 // CONSTANTS
 // Value of 1 degree in radians
 const DEG_TO_RAD = 0.0174533;
-const ELEMENTS = [
-    {
-        icon: "home",
-        onClick: () => alert("clicked home")
-    },{
-        icon: "clock-o",
-        onClick: () => alert("clicked clock")
-    },{
-        icon: "lock",
-        onClick: () => alert("clicked lock")
-    },{
-        icon: "globe",
-        onClick: () => alert("clicked globe")
-    },{
-        icon: "asterisk",
-        onClick: () => alert("clicked asterisk")
-    },{
-        icon: "fighter-jet",
-        onClick: () => alert("clicked fighter-jet")
-    },{
-        icon: "clipboard",
-        onClick: () => alert("clicked clipboard")
-    },{
-        icon: "industry",
-        onClick: () => alert("clicked industry")
-    },{
-        icon: "eye",
-        onClick: () => alert("clicked eye")
-    }
-
-];
 
 
 // UTILITY FUNCTIONS
@@ -47,49 +16,49 @@ function toRadians(degrees) {
 // -------------------------------------------------------
 class MenuButton extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
-            isOpen: false
+            isOpen: this.props.isOpen
         };
     }
 
-    toggleMenu(){
-        let { isOpen } = this.state;
+    toggleMenu() {
+        let {isOpen} = this.state;
         this.setState({
             isOpen: !isOpen
         });
     }
 
-    getMainButtonStyle(){
-        let { mainButtonDiam } = this.props;
+    getMainButtonStyle() {
+        let {mainButtonDiam} = this.props;
         return {
             width: mainButtonDiam,
             height: mainButtonDiam
         }
     }
 
-    getInitalChildButtonStyle(){
-        let { childButtonDiam, mainButtonDiam, stiffness, damping } = this.props;
+    getInitalChildButtonStyle() {
+        let {childButtonDiam, mainButtonDiam, stiffness, damping} = this.props;
         return {
             width: childButtonDiam,
             height: childButtonDiam,
             zIndex: -1,
-            top: spring(mainButtonDiam/2 - childButtonDiam/2, {stiffness, damping}),
-            left: spring(mainButtonDiam/2 - childButtonDiam/2, {stiffness, damping})
+            top: spring(mainButtonDiam / 2 - childButtonDiam / 2, {stiffness, damping}),
+            left: spring(mainButtonDiam / 2 - childButtonDiam / 2, {stiffness, damping})
         }
     }
 
-    getFinalChildButtonStyle(index){
-        let { childButtonDiam, mainButtonDiam, stiffness, damping } = this.props;
-        let { deltaX, deltaY } = this.getFinalDeltaPositions(index);
+    getFinalChildButtonStyle(index) {
+        let {childButtonDiam, mainButtonDiam, stiffness, damping} = this.props;
+        let {deltaX, deltaY} = this.getFinalDeltaPositions(index);
         return {
             width: childButtonDiam,
             height: childButtonDiam,
             zIndex: spring(0),
-            top: spring(mainButtonDiam/2 + deltaX, {stiffness, damping}),
-            left: spring(mainButtonDiam/2 - deltaY, {stiffness, damping})
+            top: spring(mainButtonDiam / 2 + deltaX, {stiffness, damping}),
+            left: spring(mainButtonDiam / 2 - deltaY, {stiffness, damping})
         }
     }
 
@@ -100,16 +69,16 @@ class MenuButton extends React.Component {
         let SEPARATION_ANGLE = this.props.seperationAngle;
         let ROTATION = this.props.rotation;
         let FAN_ANGLE = (NUM_CHILDREN - 1) * SEPARATION_ANGLE;
-        let BASE_ANGLE = ((180 - FAN_ANGLE)/2)+90+ROTATION;
+        let BASE_ANGLE = ((180 - FAN_ANGLE) / 2) + 90 + ROTATION;
 
-        let TARGET_ANGLE = BASE_ANGLE + ( index * SEPARATION_ANGLE );
+        let TARGET_ANGLE = BASE_ANGLE + (index * SEPARATION_ANGLE);
         return {
-            deltaX: FLY_OUT_RADIUS * Math.cos(toRadians(TARGET_ANGLE)) - (CHILD_BUTTON_DIAM/2),
-            deltaY: FLY_OUT_RADIUS * Math.sin(toRadians(TARGET_ANGLE)) + (CHILD_BUTTON_DIAM/2)
+            deltaX: FLY_OUT_RADIUS * Math.cos(toRadians(TARGET_ANGLE)) - (CHILD_BUTTON_DIAM / 2),
+            deltaY: FLY_OUT_RADIUS * Math.sin(toRadians(TARGET_ANGLE)) + (CHILD_BUTTON_DIAM / 2)
         };
     }
 
-    getCProps(){
+    getCProps() {
         return {
             mainButtonProps: () => ({
                 className: "button-menu",
@@ -119,7 +88,9 @@ class MenuButton extends React.Component {
             childButtonProps: (style, onClick) => ({
                 className: "button-child",
                 style,
-                onClick
+                onClick: () => {
+                    this.setState({isOpen: false}, onClick);
+                }
             }),
             childButtonMotionProps: (index, isOpen) => ({
                 key: index,
@@ -128,42 +99,43 @@ class MenuButton extends React.Component {
             }),
             // handle Icons
             childButtonIconProps: (name) => ({
-                className: "child-button-icon fa fa-"+name+" fa-"+this.props.childButtonIconSize
+                className: "child-button-icon fa fa-" + name + " fa-" + this.props.childButtonIconSize
             }),
             mainButtonIconProps: (name) => ({
-                className: "main-button-icon fa fa-"+name+" fa-"+this.props.mainButtonIconSize
+                className: "main-button-icon fa fa-" + name + " fa-" + this.props.mainButtonIconSize
             })
         }
     }
 
-    renderChildButton(item, index){
-        let { isOpen } = this.state;
+    renderChildButton(item, index) {
+        let {isOpen} = this.state;
         let cp = this.getCProps();
-
-        //return <div {...cp.childButtonProps(index, isOpen)}/>;
 
         return <Motion {...cp.childButtonMotionProps(index, isOpen)}>
             {
-                (style) => <div {...cp.childButtonProps(style, item.onClick)}>
-                    <i {...cp.childButtonIconProps(item.icon)}/>
-                </div>
+                (style) =>
+                    <div {...cp.childButtonProps(style, item.onClick)}>
+                        {item.icon}
+                        {/*<i {...cp.childButtonIconProps(item.icon)}/>*/}
+                    </div>
             }
         </Motion>;
     }
 
-    render(){
+    render() {
         let cp = this.getCProps();
-        let { elements, mainButtonIcon } = this.props;
-        let { isOpen } = this.state;
+        let {elements, mainButtonIcon} = this.props;
 
         return <div className="button-container">
-            { elements.map((item, i) => this.renderChildButton(item, i)) }
+            {elements.map((item, i) => this.renderChildButton(item, i))}
             <div {...cp.mainButtonProps()}>
-                <i {...cp.mainButtonIconProps(mainButtonIcon)}/>
+                {mainButtonIcon}
+                {/*<i {...cp.mainButtonIconProps(mainButtonIcon)}/>*/}
             </div>
         </div>;
     }
 }
+
 // -------------------------------------------------------
 // ----------------   COMPONENT END   --------------------
 // -------------------------------------------------------
@@ -171,26 +143,27 @@ class MenuButton extends React.Component {
 
 // APP
 class Menu extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
             flyOutRadius: 120,
-            seperationAngle: 40,
-            mainButtonDiam: 64,
+            seperationAngle: 30,
+            mainButtonDiam: 52,
             childButtonDiam: 48,
-            numElements: 4,
+            numElements: 5,
             stiffness: 320,
-            damping: 17,
+            damping: 24,
             rotation: 0,
-            mainButtonIcon: "bars",
+            mainButtonIcon: this.props.mainButtonIcon,
             mainButtonIconSize: "2x",
             childButtonIconSize: "lg"
         }
     }
 
-    render(){
-        return <MenuButton {...this.state} elements={ELEMENTS.slice(0, this.state.numElements)}/>;
+    render() {
+        return <MenuButton {...this.state} isOpen={this.props.menuOpen}
+                           elements={this.props.buttons.slice(0, this.state.numElements)}/>;
     }
 }
 

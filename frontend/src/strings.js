@@ -7,6 +7,7 @@ const strings = {
         },
         titles: {
             softwareDevelopment: 'Разработка сайтов и мобильных приложений',
+            projects: 'История проектов',
             technologyStack: 'Стек технологий',
         },
         texts: {

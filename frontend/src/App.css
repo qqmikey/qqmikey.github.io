@@ -83,7 +83,8 @@ body {
 }
 
 .button-menu {
-    background: #6047ec;
+    /*background: #6047ec;*/
+    background: #f50057;
     border-radius: 1000px;
     box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.5);
     display: flex;
