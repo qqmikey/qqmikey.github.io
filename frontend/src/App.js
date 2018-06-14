@@ -66,6 +66,7 @@ const styles = theme => ({
         [theme.breakpoints.up('md')]: {
             position: 'fixed',
         },
+        background: '#fff0'
     },
     media: {
         height: 0,
