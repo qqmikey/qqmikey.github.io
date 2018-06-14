@@ -85,7 +85,7 @@ class DrawerList extends React.Component {
                                 </ListItemText>
                             </ListItem>
                             <ListItem button className={classes.nested}
-                                      onClick={() => window.open("mailto://qqmikey@icloud.com")}>
+                                      onClick={() => window.open("mailto:qqmikey@icloud.com")}>
                                 <Avatar src={emailIcon}/>
                                 <ListItemText inset primary="email">
                                 </ListItemText>
@@ -97,7 +97,7 @@ class DrawerList extends React.Component {
                                 </ListItemText>
                             </ListItem>
                             <ListItem button className={classes.nested}
-                                      onClick={() => window.open("tel://+79292698962")}>
+                                      onClick={() => window.open("tel:+79292698962")}>
                                 <Avatar src={callIcon}/>
                                 <ListItemText inset primary="call">
                                 </ListItemText>
