@@ -69,12 +69,12 @@ class Stack extends React.Component {
                         <ListItem>
                             <Avatar
                                 src={tornado}/>
-                            <ListItemText primary="Tornado" secondary="July 20, 2014"/>
+                            <ListItemText primary="Tornado"/>
                         </ListItem>
                         <ListItem>
                             <Avatar
                                 src={celery}/>
-                            <ListItemText primary="Celery" secondary="July 20, 2014"/>
+                            <ListItemText primary="Celery"/>
                         </ListItem>
                     </List>
 
@@ -95,12 +95,12 @@ class Stack extends React.Component {
                         <ListItem>
                             <Avatar
                                 src={sails}/>
-                            <ListItemText primary="Sails.js" secondary="July 20, 2014"/>
+                            <ListItemText primary="Sails.js"/>
                         </ListItem>
                         <ListItem>
                             <Avatar
                                 src={electron}/>
-                            <ListItemText primary="Electron" secondary="July 20, 2014"/>
+                            <ListItemText primary="Electron"/>
                         </ListItem>
                     </List>
 
@@ -120,17 +120,17 @@ class Stack extends React.Component {
                         <ListItem>
                             <Avatar
                                 src={rxswift}/>
-                            <ListItemText primary="RxSwift" secondary="July 20, 2014"/>
+                            <ListItemText primary="RxSwift"/>
                         </ListItem>
                         <ListItem>
                             <Avatar
                                 src={xcode}/>
-                            <ListItemText primary="Xcode" secondary="July 20, 2014"/>
+                            <ListItemText primary="Xcode"/>
                         </ListItem>
                         <ListItem>
                             <Avatar
                                 src={vuforia}/>
-                            <ListItemText primary="Vuforia" secondary="July 20, 2014"/>
+                            <ListItemText primary="Vuforia"/>
                         </ListItem>
                     </List>
 
@@ -145,17 +145,17 @@ class Stack extends React.Component {
                         <ListItem>
                             <Avatar
                                 src={zend}/>
-                            <ListItemText primary="Zend framework" secondary="July 20, 2014"/>
+                            <ListItemText primary="Zend framework"/>
                         </ListItem>
                         <ListItem>
                             <Avatar
                                 src={laravel}/>
-                            <ListItemText primary="Laravel" secondary="July 20, 2014"/>
+                            <ListItemText primary="Laravel"/>
                         </ListItem>
                         <ListItem>
                             <Avatar
                                 src={wp}/>
-                            <ListItemText primary="Wordpress" secondary="July 20, 2014"/>
+                            <ListItemText primary="Wordpress"/>
                         </ListItem>
                     </List>
                 </div>
@@ -179,17 +179,17 @@ class Stack extends React.Component {
                         <ListItem>
                             <Avatar
                                 src={backbone}/>
-                            <ListItemText primary="Backbone.js" secondary="July 20, 2014"/>
+                            <ListItemText primary="Backbone.js"/>
                         </ListItem>
                         <ListItem>
                             <Avatar
                                 src={marionette}/>
-                            <ListItemText primary="Marionette" secondary="July 20, 2014"/>
+                            <ListItemText primary="Marionette"/>
                         </ListItem>
                         <ListItem>
                             <Avatar
                                 src={bem}/>
-                            <ListItemText primary="BEM" secondary="July 20, 2014"/>
+                            <ListItemText primary="BEM"/>
                         </ListItem>
                     </List>
 
@@ -209,17 +209,17 @@ class Stack extends React.Component {
                         <ListItem>
                             <Avatar
                                 src={rabbit}/>
-                            <ListItemText primary="RabbitMQ" secondary="July 20, 2014"/>
+                            <ListItemText primary="RabbitMQ"/>
                         </ListItem>
                         <ListItem>
                             <Avatar
                                 src={webpack}/>
-                            <ListItemText primary="Webpack" secondary="July 20, 2014"/>
+                            <ListItemText primary="Webpack"/>
                         </ListItem>
                         <ListItem>
                             <Avatar
                                 src={gulp}/>
-                            <ListItemText primary="Gulp" secondary="July 20, 2014"/>
+                            <ListItemText primary="Gulp"/>
                         </ListItem>
                     </List>
 
@@ -238,7 +238,7 @@ class Stack extends React.Component {
                         <ListItem>
                             <Avatar
                                 src={mongo}/>
-                            <ListItemText primary="Mongodb" secondary="July 20, 2014"/>
+                            <ListItemText primary="Mongodb"/>
                         </ListItem>
                         <ListItem>
                             <Avatar
@@ -248,7 +248,7 @@ class Stack extends React.Component {
                         <ListItem>
                             <Avatar
                                 src={sqlite}/>
-                            <ListItemText primary="Sqlite" secondary="July 20, 2014"/>
+                            <ListItemText primary="Sqlite"/>
                         </ListItem>
                     </List>
 
