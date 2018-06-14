@@ -6,7 +6,12 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
+
+import ios from '../img/iosdev.png';
+import web from '../img/webdev.png';
+
 import strings from "../strings";
+
 import {withStyles} from "@material-ui/core/styles/index";
 
 const styles = theme => ({
@@ -57,7 +62,7 @@ class Main extends React.Component {
                             <Card style={{minWidth: 320, maxWidth: 400, margin: '0 auto'}}>
                                 <CardMedia
                                     className={classes.media}
-                                    image="https://qqmikey.github.io/static/img/iosdev.png"
+                                    image={ios}
                                     title=""
                                 />
                                 <CardContent>
@@ -76,7 +81,7 @@ class Main extends React.Component {
                             <Card style={{minWidth: 320, maxWidth: 400, margin: '0 auto'}}>
                                 <CardMedia
                                     className={classes.media}
-                                    image="https://qqmikey.github.io/static/img/webdev.png"
+                                    image={web}
                                     title=""
                                 />
                                 <CardContent>
