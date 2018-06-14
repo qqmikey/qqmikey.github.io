@@ -11,7 +11,7 @@ import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 import DrawerList from './components/drawerList';
 import Menu from './components/menu';
 import Main from './components/main';
-import Projects from './components/projectsList';
+import Projects from './components/projects';
 import Extension from '@material-ui/icons/Extension';
 import MenuIcon from '@material-ui/icons/Menu';
 

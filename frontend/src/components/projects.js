@@ -11,21 +11,20 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import red from '@material-ui/core/colors/red';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
 
 import strings from "../strings";
 
 const styles = theme => ({
     card: {
         maxWidth: 900,
-        // margin: '0 auto',
-        marginTop: 24
+        marginTop: 24,
+        backgroundColor: '#fff0',
+        border: '1px solid'
     },
     media: {
         height: 0,
@@ -54,7 +53,7 @@ const styles = theme => ({
         transform: 'translateZ(0)',
     },
     title: {
-        color: theme.palette.primary.light,
+        color: theme.palette.secondary.light,
     },
     titleBar: {
         background:
@@ -70,11 +69,29 @@ class Projects extends React.Component {
 
     componentDidMount() {
         this.getProjects();
+        this.addListenters();
+    }
+
+    async addListenters() {
+        let that = this,
+            projectsRef = await this.props.db.ref('project_list');
+
+        projectsRef.on('child_changed', function(data) {
+            that.getProjects();
+        });
+
+        // projectsRef.on('child_added', function(data) {
+        //     alert('aded');
+        // });
+
+        // projectsRef.on('child_removed', function(data) {
+        //     alert('removed');
+        // });
     }
 
     async getProjects() {
-        let projects = await this.props.db.ref('project_list').once('value');
-        projects = Object.values(projects.val());
+        let projectsRef = await this.props.db.ref('project_list').once('value');
+        let projects = projectsRef.val();
         this.setState({projects});
     }
 
@@ -84,6 +101,27 @@ class Projects extends React.Component {
         this.setState(projects);
     };
 
+    writeNewPost(uid, username, picture, title, body) {
+        // A post entry.
+        let postData = {
+            author: username,
+            uid: uid,
+            body: body,
+            title: title,
+            starCount: 0,
+            authorPic: picture
+        };
+
+        // Get a key for a new Post.
+        let newPostKey = this.props.db.ref().child('posts').push().key;
+
+        // Write the new post's data simultaneously in the posts list and the user's post list.
+        let updates = {};
+        updates['/posts/' + newPostKey] = postData;
+        updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+
+        return this.props.db.ref().update(updates);
+    }
 
     render() {
         const {classes} = this.props;
@@ -131,9 +169,7 @@ class Projects extends React.Component {
                                         <Collapse in={item.expanded} timeout="auto" unmountOnExit>
                                             <CardContent>
 
-                                                <Typography paragraph>
-                                                    {item.desc}
-                                                </Typography>
+                                                <div dangerouslySetInnerHTML={{__html: item.desc}} />
 
                                                 <GridList className={classes.gridList} cols={2.5}>
                                                     {item.images && item.images.map((tile, i) => (
