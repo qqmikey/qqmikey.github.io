@@ -1,0 +1,23 @@
+{
+  "main.css": "static/css/main.a00306c8.css",
+  "main.css.map": "static/css/main.a00306c8.css.map",
+  "main.js": "static/js/main.a2e29cb4.js",
+  "main.js.map": "static/js/main.a2e29cb4.js.map",
+  "static/media/alamofire.png": "static/media/alamofire.510e7864.png",
+  "static/media/background_black.jpg": "static/media/background_black.05d3eb03.jpg",
+  "static/media/docker.jpg": "static/media/docker.f61e45cf.jpg",
+  "static/media/express.png": "static/media/express.d3501596.png",
+  "static/media/marionette.png": "static/media/marionette.f96113a3.png",
+  "static/media/mysql.svg": "static/media/mysql.35091c33.svg",
+  "static/media/node.png": "static/media/node.2939f26c.png",
+  "static/media/postgres.png": "static/media/postgres.b85ec1ba.png",
+  "static/media/react.png": "static/media/react.37fe8322.png",
+  "static/media/sails.png": "static/media/sails.ae9642ec.png",
+  "static/media/tg.png": "static/media/tg.1330ba39.png",
+  "static/media/tornado.jpg": "static/media/tornado.31035d15.jpg",
+  "static/media/vk.png": "static/media/vk.d29fc14e.png",
+  "static/media/vuforia.png": "static/media/vuforia.bdce2c61.png",
+  "static/media/webpack.png": "static/media/webpack.84791332.png",
+  "static/media/wp.png": "static/media/wp.c7c0155e.png",
+  "static/media/zend.png": "static/media/zend.fc3ccacf.png"
+}
