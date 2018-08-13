@@ -169,12 +169,12 @@ class Projects extends React.Component {
                                         <Collapse in={item.expanded} timeout="auto" unmountOnExit>
                                             <CardContent>
 
-                                                <div dangerouslySetInnerHTML={{__html: item.desc}} />
+                                                <div dangerouslySetInnerHTML={{__html: item.desc}} style={{marginBottom: 16}}/>
 
                                                 <GridList className={classes.gridList} cols={2.5}>
                                                     {item.images && item.images.map((tile, i) => (
-                                                        <GridListTile key={i}>
-                                                            <img src={tile.img}/>
+                                                        <GridListTile key={`${tile.img}_${i}`} style={{textAlign: 'center'}}>
+                                                            <img src={tile.img} style={{height: '100%', width: 'auto'}}/>
                                                             <GridListTileBar
                                                                 title={tile.title}
                                                                 classes={{

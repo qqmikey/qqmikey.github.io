@@ -101,10 +101,10 @@ class App extends React.Component {
                 onClick: () => this.setState({page: 'projects'})
             }, {
                 icon: <Avatar src={callIcon} style={{color: '#000'}}/>,
-                onClick: () => window.open("tel://+79292698962")
+                onClick: () => window.open("tel:+79292698962")
             }, {
                 icon: <Avatar src={emailIcon} style={{color: '#000'}}/>,
-                onClick: () => window.open("mailto://qqmikey@icloud.com")
+                onClick: () => window.open("mailto:qqmikey@icloud.com")
             }, {
                 icon: <Avatar src={tgIcon} style={{color: '#000'}}/>,
                 onClick: () => window.open("https://telegram.me/qqmikey")
