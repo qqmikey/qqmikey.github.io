@@ -113,6 +113,15 @@ class App extends React.Component {
     };
 
     componentDidMount() {
+        let hash = window.location.hash;
+        switch (hash) {
+            case '#projects':
+                this.setState({page: 'projects'});
+                break;
+            default:
+                this.setState({page: 'main'});
+                break;
+        }
     }
 
     renderContent() {
@@ -126,7 +135,14 @@ class App extends React.Component {
     }
 
     onPageChange(page) {
-        this.setState({page})
+        this.setState({page}, () => {
+            switch (page) {
+                case 'main':
+                    return window.history && window.history.replaceState( {} , '', '/' );
+                case 'projects':
+                    return window.history && window.history.replaceState( {} , '', '/#projects' );
+            }
+        })
     }
 
     render() {
